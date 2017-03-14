@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './products.component';
-import {HomeComponent} from './home.component';
-import {ProductDetailsComponent} from './product-details.component'
+import { ProductsComponent } from './products/products.component';
+import {HomeComponent} from './home/home.component';
+import {ProductDetailsComponent} from './products/product-details.component'
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
