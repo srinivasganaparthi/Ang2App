@@ -1,4 +1,4 @@
-import { Product } from '../product';
+import { Product } from '../products/product';
 
 export var PRODUCTS: Product[] = [
 	{ "id": 11, "name": "Computers", "description": "Computers" },
