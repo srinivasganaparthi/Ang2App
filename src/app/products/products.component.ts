@@ -14,8 +14,12 @@ export class ProductsComponent implements OnInit {
   constructor(private _productService: ProductService,private _router: Router) { }
 
   getProducts() {
-    this._productService.getProducts().then(products => this.products = products);
+    //this._productService.getProducts().then(products => this.products = products);
     //var userFilter: products = { name: '' };
+    this._productService.getProducts().subscribe(
+        products => this.products = products,
+        () => console.log('Completed!')
+      );
   }
 
 gotoDetail(product: Product) {
