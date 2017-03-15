@@ -11,9 +11,15 @@ namespace ApiService
     {
       config.Routes.MapHttpRoute(
           name: "DefaultApi",
-          routeTemplate: "api/{controller}/{id}",
+          routeTemplate: "api/{controller}/{action}/{id}",
           defaults: new { id = RouteParameter.Optional }
       );
+
+      //config.Routes.MapHttpRoute(
+      //    name: "ApiByName",
+      //    routeTemplate: "api/{controller}/{action}/{name}",
+      //    defaults: new { name = RouteParameter.Optional }
+      //);
 
       // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
       // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.

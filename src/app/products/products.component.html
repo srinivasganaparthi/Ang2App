@@ -2,7 +2,8 @@
   <h2>List of Products</h2>
 </div>
 <div>
-  <!--<input class="form-control" type="text" [(ngModel)]="userFilter.name" placeholder="name">-->
+  <input class="form-control" type="text" [(ngModel)]="productSerach.name" (ngModelChange)="SearchProducts()" placeholder="Search by Product Name">
+   <br>
 </div>
 <div>
   <table class="table table-bordered table-striped table-hover">
@@ -17,10 +18,16 @@
         Description
       </th>
       <th>
+        Price
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
         Action
       </th>
     </tr>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of pagedItems">
       <td>
         {{product.id}}
       </td>
@@ -31,11 +38,48 @@
         {{product.description}}
       </td>
       <td>
+        {{product.price}}
+      </td>
+      <td>
+        {{product.category}}
+      </td>
+      <td>
         <input type="button" value="Edit" class="btn btn-primary" (click)="gotoDetail(product)" />
       </td>
     </tr>
   </table>
-
+  <!-- pager -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination" *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">First</span>
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+        <a class="page-link" (click)="setPage(pager.currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a class="page-link" (click)="setPage(pager.totalPages)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Last</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
   <!-- 
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that

@@ -2,6 +2,10 @@ export class Product {
 	id: number;
 	name: string;
 	description: string;
+	price: number;
+	mfcdate:Date;
+	quantity:number;
+	category:string;
 }
 
 

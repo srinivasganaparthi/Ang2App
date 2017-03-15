@@ -1,7 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../services/product.service';
-import {Product} from './product';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
+import { Product } from '../models/product';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+import * as _ from 'underscore';
+import { PagerService } from '../services/pager.service'
 
 @Component({
   selector: 'app-root',
@@ -9,26 +13,57 @@ import {Router} from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
+  mainProducts: Product[];
+  productSerach = { name: '' };
   selectedProduct: Product;
+  // pager object
+  pager: any = {};
 
-  constructor(private _productService: ProductService,private _router: Router) { }
+  // paged items
+  pagedItems: Product[];
+  constructor(private _productService: ProductService, private _router: Router, private pagerService: PagerService) { }
 
-  getProducts() {
+  getProducts(name:string) {
     //this._productService.getProducts().then(products => this.products = products);
-    //var userFilter: products = { name: '' };
-    this._productService.getProducts().subscribe(
-        products => this.products = products,
-        () => console.log('Completed!')
-      );
+
+    this._productService.getProducts(name).subscribe(
+      products => {
+        this.products = products;
+        this.mainProducts = products;
+        this.setPage(1);
+      }
+    );
   }
 
-gotoDetail(product: Product) {
-  this.selectedProduct = product;
+  SearchProducts() {
+    // if (this.productSerach.name == "") {
+    //   this.products = this.mainProducts;
+    //   this.setPage(1);
+    // } else {
+    //   this.products = this.mainProducts.filter(product => product.name.toLowerCase().indexOf(this.productSerach.name.toLowerCase()) > -1)
+    //   this.setPage(1);
+    // }
+    this.getProducts(this.productSerach.name);
+  }
+  gotoDetail(product: Product) {
+    this.selectedProduct = product;
     this._router.navigate(['product/' + this.selectedProduct.id]);
   }
 
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.products.length, page);
+
+    // get current page of items
+    this.pagedItems = this.products.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  }
+
   ngOnInit() {
-    this.getProducts();
+    this.getProducts('');
   }
 
 }

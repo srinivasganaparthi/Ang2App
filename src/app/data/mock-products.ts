@@ -1,17 +1,17 @@
-import { Product } from '../products/product';
+// import { Product } from '../models/product';
 
-export var PRODUCTS: Product[] = [
-	{ "id": 11, "name": "Computers", "description": "Computers" },
-	{ "id": 12, "name": "Mobiles", "description": "Mobiles" },
-	{ "id": 13, "name": "Cars", "description": "Cars" },
-	{ "id": 14, "name": "Bykes", "description": "Bykes" },
-	{ "id": 15, "name": "Books", "description": "Books" },
-	{ "id": 16, "name": "Beverages", "description": "Beverages" },
-	{ "id": 17, "name": "Cakes", "description": "Cakes" },
-	{ "id": 18, "name": "Cookies", "description": "Cookies" },
-	{ "id": 19, "name": "Milk", "description": "Milk" },
-	{ "id": 20, "name": "Miscellaneous", "description": "Miscellaneous" }
-];
+// export var PRODUCTS: Product[] = [
+// 	{ "id": 11, "name": "Computers", "description": "Computers",100,'',1, },
+// 	{ "id": 12, "name": "Mobiles", "description": "Mobiles" },
+// 	{ "id": 13, "name": "Cars", "description": "Cars" },
+// 	{ "id": 14, "name": "Bykes", "description": "Bykes" },
+// 	{ "id": 15, "name": "Books", "description": "Books" },
+// 	{ "id": 16, "name": "Beverages", "description": "Beverages" },
+// 	{ "id": 17, "name": "Cakes", "description": "Cakes" },
+// 	{ "id": 18, "name": "Cookies", "description": "Cookies" },
+// 	{ "id": 19, "name": "Milk", "description": "Milk" },
+// 	{ "id": 20, "name": "Miscellaneous", "description": "Miscellaneous" }
+// ];
 
 
 /*

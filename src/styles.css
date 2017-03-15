@@ -42,10 +42,15 @@ body {
 
 .btn-primary:hover
 {
-cursor: pointer;
+ cursor: pointer;
 }
 .btn
 {
-cursor: pointer;
+ cursor: pointer;
+}
+
+.page-link
+{
+    cursor: pointer;
 }
 
