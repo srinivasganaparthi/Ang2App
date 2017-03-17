@@ -5,7 +5,7 @@ import { Category } from '../models/categories';
 import { ProductService } from '../services/product.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-productdetails',
   templateUrl: './product-details.component.html'
 })
 export class ProductDetailsComponent implements OnInit {

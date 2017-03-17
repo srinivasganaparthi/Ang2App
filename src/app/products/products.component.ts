@@ -8,7 +8,7 @@ import * as _ from 'underscore';
 import { PagerService } from '../services/pager.service'
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-products',
   templateUrl: './products.component.html'
 })
 export class ProductsComponent implements OnInit {
