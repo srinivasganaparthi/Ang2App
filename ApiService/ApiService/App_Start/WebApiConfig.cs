@@ -9,11 +9,22 @@ namespace ApiService
   {
     public static void Register(HttpConfiguration config)
     {
+      //config.MessageHandlers.Add(new MessageHandler2());
+
       config.Routes.MapHttpRoute(
           name: "DefaultApi",
           routeTemplate: "api/{controller}/{action}/{id}",
           defaults: new { id = RouteParameter.Optional }
       );
+
+      config.Routes.MapHttpRoute(
+            name: "Route2",
+            routeTemplate: "api2/Employee/{id}",
+            defaults: new { controller = "Employee", id = RouteParameter.Optional },
+            constraints: null,
+            handler: new MessageHandler2(GlobalConfiguration.Configuration)  // per-route message handler
+        );
+      //config.MessageHandlers.Add(new MessageHandler1());
 
       //config.Routes.MapHttpRoute(
       //    name: "ApiByName",
